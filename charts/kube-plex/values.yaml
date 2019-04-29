@@ -107,7 +107,7 @@ persistence:
 
 #Optionally use a pre-existing NFS server for media and config.
 #Only Data and Config as NFS isn't generally a good idea for transcode.YMMV.
-existing-nfs:
+existingNFS:
   enabled: false
   config:
     host: 127.0.0.1

@@ -110,16 +110,16 @@ spec:
         volumeMounts:
         - name: data
           mountPath: /data
-        {{- if .Values.existing-nfs.enabled true }}
-          readOnly: {{ .Values.existing-nfs.data.readonly }}
+        {{- if .Values.existingNFS.enabled true }}
+          readOnly: {{ .Values.existingNFS.data.readonly }}
         {{- end }}
         {{- if .Values.persistence.data.subPath }}
           subPath: {{ .Values.persistence.data.subPath }}
         {{ end }}
         - name: config
           mountPath: /config
-        {{- if .Values.existing-nfs.enabled true }}
-          readOnly: {{ .Values.existing-nfs.config.readonly }}
+        {{- if .Values.existingNFS.enabled true }}
+          readOnly: {{ .Values.existingNFS.config.readonly }}
         {{- end }}
         {{- if .Values.persistence.config.subPath }}
           subPath: {{ .Values.persistence.config.subPath }}
@@ -139,10 +139,10 @@ spec:
     {{- end }}
       volumes:
       - name: data
-{{- if .Values.existing-nfs.enabled true }}
+{{- if .Values.existingNFS.enabled true }}
         nfs:
-          server: {{ .Values.existing-nfs.data.host }}
-          path: {{ .Values.existing-nfs.data.path }}
+          server: {{ .Values.existingNFS.data.host }}
+          path: {{ .Values.existingNFS.data.path }}
 {{- else if .Values.persistence.data.claimName }}
         persistentVolumeClaim:
           claimName: "{{ .Values.persistence.data.claimName }}"
@@ -151,10 +151,10 @@ spec:
           claimName: "{{ template "fullname" . }}-data"
 {{- end }}
       - name: config
-{{- if .Values.existing-nfs.enabled true }}
+{{- if .Values.existingNFS.enabled true }}
         nfs:
-          server: {{ .Values.existing-nfs.config.host }}
-          path: {{ .Values.existing-nfs.config.path }}
+          server: {{ .Values.existingNFS.config.host }}
+          path: {{ .Values.existingNFS.config.path }}
 {{- else if .Values.persistence.config.claimName }}
         persistentVolumeClaim:
           claimName: "{{ .Values.persistence.config.claimName }}"
