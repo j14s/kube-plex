@@ -18,8 +18,9 @@ spec:
 {{- if .Values.persistence.transcode.storageClass }}
   storageClassName: {{ .Values.persistence.transcode.storageClass | quote }}
 {{- end }}
----
 {{- end }}
+{{- if .Values.existing-nfs.enabled false }}
+---
 {{- if not .Values.persistence.config.claimName }}
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -63,4 +64,5 @@ spec:
   storageClassName: {{ .Values.persistence.data.storageClass | quote }}
 {{- end }}
 ---
+{{- end }}
 {{- end }}
