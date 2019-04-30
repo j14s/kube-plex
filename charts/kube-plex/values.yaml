@@ -106,14 +106,15 @@ persistence:
     accessMode: ReadWriteMany
 
 #Optionally use a pre-existing NFS server for media and config.
-#Only Data and Config as NFS isn't generally a good idea for transcode.YMMV.
+#Only Data, because sqllight doesn't like NFS and NFS isn't 
+#generally a good idea for transcode.YMMV.
 existingNFS:
   enabled: false
-  config:
-    host: 127.0.0.1
-    path: "/nfs/config"
-    #This should always be false
-    readonly: false
+  # config:
+  #   host: 127.0.0.1
+  #   path: "/nfs/config"
+  #   #This should always be false
+  #   readonly: false
   data:
     host: 127.0.0.1
     path: "/nfs/data"

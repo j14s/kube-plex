@@ -151,11 +151,7 @@ spec:
           claimName: "{{ template "fullname" . }}-data"
 {{- end }}
       - name: config
-{{- if .Values.existingNFS.enabled }}
-        nfs:
-          server: {{ .Values.existingNFS.config.host }}
-          path: {{ .Values.existingNFS.config.path }}
-{{- else if .Values.persistence.config.claimName }}
+{{- if .Values.persistence.config.claimName }}
         persistentVolumeClaim:
           claimName: "{{ .Values.persistence.config.claimName }}"
 {{- else }}

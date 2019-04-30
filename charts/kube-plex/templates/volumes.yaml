@@ -19,7 +19,6 @@ spec:
   storageClassName: {{ .Values.persistence.transcode.storageClass | quote }}
 {{- end }}
 {{- end }}
-{{- if not .Values.existingNFS.enabled }}
 ---
 {{- if not .Values.persistence.config.claimName }}
 apiVersion: v1
@@ -41,6 +40,7 @@ spec:
 {{- if .Values.persistence.config.storageClass }}
   storageClassName: {{ .Values.persistence.config.storageClass | quote }}
 {{- end }}
+{{- if not .Values.existingNFS.enabled }}
 ---
 {{- end }}
 {{- if not .Values.persistence.data.claimName }}
