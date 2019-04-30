@@ -19,7 +19,7 @@ spec:
   storageClassName: {{ .Values.persistence.transcode.storageClass | quote }}
 {{- end }}
 {{- end }}
-{{- if .Values.existingNFS.enabled false }}
+{{- if not .Values.existingNFS.enabled }}
 ---
 {{- if not .Values.persistence.config.claimName }}
 apiVersion: v1

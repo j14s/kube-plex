@@ -110,7 +110,7 @@ spec:
         volumeMounts:
         - name: data
           mountPath: /data
-        {{- if .Values.existingNFS.enabled true }}
+        {{- if .Values.existingNFS.enabled }}
           readOnly: {{ .Values.existingNFS.data.readonly }}
         {{- end }}
         {{- if .Values.persistence.data.subPath }}
@@ -118,7 +118,7 @@ spec:
         {{ end }}
         - name: config
           mountPath: /config
-        {{- if .Values.existingNFS.enabled true }}
+        {{- if .Values.existingNFS.enabled }}
           readOnly: {{ .Values.existingNFS.config.readonly }}
         {{- end }}
         {{- if .Values.persistence.config.subPath }}
@@ -139,7 +139,7 @@ spec:
     {{- end }}
       volumes:
       - name: data
-{{- if .Values.existingNFS.enabled true }}
+{{- if .Values.existingNFS.enabled }}
         nfs:
           server: {{ .Values.existingNFS.data.host }}
           path: {{ .Values.existingNFS.data.path }}
@@ -151,7 +151,7 @@ spec:
           claimName: "{{ template "fullname" . }}-data"
 {{- end }}
       - name: config
-{{- if .Values.existingNFS.enabled true }}
+{{- if .Values.existingNFS.enabled }}
         nfs:
           server: {{ .Values.existingNFS.config.host }}
           path: {{ .Values.existingNFS.config.path }}
