@@ -40,9 +40,9 @@ spec:
 {{- if .Values.persistence.config.storageClass }}
   storageClassName: {{ .Values.persistence.config.storageClass | quote }}
 {{- end }}
+{{- end }}
 {{- if not .Values.existingNFS.enabled }}
 ---
-{{- end }}
 {{- if not .Values.persistence.data.claimName }}
 apiVersion: v1
 kind: PersistentVolumeClaim
